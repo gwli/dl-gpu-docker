@@ -33,16 +33,21 @@ setup steps
    NVIDIA_CUDA-8.0_Samples/bin/x86_64/linux/debug/simpleGL
  
  
-== How it works ==
+How it works
+============
+
 1.  Container shares X11 unix socket /tmp/.X11-unix fom host.  The option "--net=host" implicitly makes it.
 2.  Container shares .Xauthority from host.  The option "-v $HOME/.Xauthority:/home/nvidia/.Xauthority" did this.  The container image was created with a user "nvdia" that has the same UID and GROUPS with current user in host.
 3.  User mode nvidia driver .so files are automatically mapped into docker container. This is done by nvidia-docker.
 4.  All devices are mapped into container by option "--privileged"
     It's possible to remove requirement of "--privileged" by mapping only requried devices
     nvidia-docker mapps below devcies. Those are sufficient to CUDA applications.
+
     * /dev/nvidia0
     * /dev/nvidiactl
     * /dev/nvidia-uvm
     * /dev/nvidia-uvm-tools
+
     For OpenGL supports, the required devices need to be investigataed. Below are already known:
+
     * /dev/dri/carad0
