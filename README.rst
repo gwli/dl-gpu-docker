@@ -19,7 +19,7 @@ setup steps
    mkdir tmpdocker
    cd tmpdocker
    #put Dockerfile from step#2 in current folder
-   nvidia-docker build -t nvdevtools . 
+   nvidia-docker build -t nvdevtools -f Dockerfile.xxx . 
  
 4. Run
    nvidia-docker run --privileged -it -e DISPLAY -v $HOME/.Xauthority:/home/test/.Xauthority --net=host nvdevtools /bin/bash
