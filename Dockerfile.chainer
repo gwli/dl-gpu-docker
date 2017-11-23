@@ -26,6 +26,11 @@ RUN curl -O https://bootstrap.pypa.io/get-pip.py && \
 RUN pip install --no-cache-dir --upgrade --no-cache-dir numpy==1.11.0 pexpect psutil future ptvsd \
         chainer
 
+#Fix ptvsd
+COPY ptvsd_debugger.patch /tmp/ptvsd_debugger.patch
+RUN  patch /usr/local/lib/python2.7/dist-packages/ptvsd/debugger.py /tmp/ptvsd_debugger.patch && \
+     rm /tmp/ptvsd_debugger.patch
+
 # Replace 1000 with UID and GROUPS got rom step #1
 
 
