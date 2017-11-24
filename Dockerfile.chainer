@@ -30,7 +30,7 @@ RUN curl -O https://bootstrap.pypa.io/get-pip.py && \
     rm get-pip.py
 
 #opencv-python matplotlib scipy PyOpenSSL service_identity enum pycoco 
-RUN pip install --no-cache-dir --upgrade --no-cache-dir numpy pexpect psutil future ptvsd \
+RUN pip install --no-cache-dir --upgrade numpy pexpect psutil future ptvsd \
     opencv-python matplotlib scipy PyOpenSSL service_identity   \
     chainer cupy
 
@@ -41,7 +41,13 @@ COPY ptvsd_debugger.patch /tmp/ptvsd_debugger.patch
 RUN  patch /usr/local/lib/python3.5/dist-packages/ptvsd/debugger.py /tmp/ptvsd_debugger.patch && \
      rm /tmp/ptvsd_debugger.patch
 
-
+# install coco
+RUN  git clone https://github.com/cocodataset/cocoapi.git && \
+     cd cocoapi/PythonAPI/ && \
+     pip install --no-cache-dir --upgrade Cython && \
+     python3 setup.py build_ext install && \
+     cd ../../ && rm -rf cocoapi  
+   
 
 # Replace 1000 with UID and GROUPS got rom step #1
 

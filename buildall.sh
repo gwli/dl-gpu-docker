@@ -1,5 +1,5 @@
-for i in chainer cntk mxnet pytorch tensorflow;
+for i in  cntk mxnet pytorch tensorflow chainer;
 do 
    echo "build :$i"
-   buildcmd.sh $i
+   ./buildcmd.sh $i
 done

@@ -19,8 +19,8 @@ RUN apt-get update &&  \
     rm -rf /var/lib/apt/lists/* 
 
 # install libs for pytorch
-RUN apt-get uupdate && \
-    apt-get isntall -y imagemagick && \
+RUN apt-get update && \
+    apt-get install -y imagemagick && \
     rm -rf /var/lib/apt/lists/* 
 
 
