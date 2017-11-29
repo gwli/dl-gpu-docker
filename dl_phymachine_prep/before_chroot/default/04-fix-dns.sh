@@ -1,0 +1,1 @@
+../available/04-fix-dns.sh
