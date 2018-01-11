@@ -1,0 +1,11 @@
+#FROM nvidia/cuda:9.1-devel-ubuntu16.04
+FROM nvidia/cuda:8.0-devel-ubuntu16.04
+
+RUN apt-get update && \
+    apt-get install -y python python-dev python-numpy pkg-config sqlite3  libsqlite3-dev \
+            cmake make git automake \
+            libopenmpi-dev libfftw3-dev  libatlas-base-dev && \
+    rm -rf /var/lib/apt/lists/* 
+
+
+
